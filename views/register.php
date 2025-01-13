@@ -1,3 +1,14 @@
+<?php
+
+require_once '../model/DATABASE.php';
+
+$db = new Database();
+
+$conn = $db->connect();
+
+
+
+?>
 
 <html lang="fr">
  <head>
@@ -50,7 +61,16 @@
     <h2 class="text-2xl font-bold mb-4">
      Inscription
     </h2>
-    <form action="#" method="POST">
+
+    <!-- Affichage des messages d'erreur ou de succès -->
+    <?php if ($message): ?>
+        <div class="mb-4 p-4 text-center text-white 
+             <?php echo (strpos($message, "réussi") !== false) ? 'bg-green-600' : 'bg-red-600'; ?>">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
+
+    <form action="" method="POST">
      <div class="mb-4">
       <label class="block text-gray-700" for="name">
        Nom complet
@@ -89,7 +109,7 @@
      </div>
     </form>
     <p class="text-center">
-     Déjà un compte ?
+     Déjà un compte ? 
      <a class="text-blue-600 hover:underline" href="#">
       Connectez-vous
      </a>

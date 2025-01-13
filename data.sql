@@ -31,7 +31,10 @@ CREATE TABLE tags (
 
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL UNIQUE
+        course_id INT,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+
 );
 
 
