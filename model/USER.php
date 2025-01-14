@@ -60,7 +60,32 @@ abstract class User {
         return password_verify($password, $this->password);
     }
 
+    abstract public function register($conn);
 
+    public static function login($email, $password, $conn) {
+        $query = "SELECT * FROM users WHERE email = :email";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+    
+        if ($stmt->rowCount() > 0) {
+            $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            if (password_verify($password, $userData['password'])) {
+                if ($userData['role'] == 'student') {
+                    return 'student';
+                } elseif ($userData['role'] == 'teacher') {
+                    return 'teacher';
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>
