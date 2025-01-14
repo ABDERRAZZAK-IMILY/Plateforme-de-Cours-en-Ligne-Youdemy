@@ -72,6 +72,11 @@ abstract class User {
             $userData = $stmt->fetch(PDO::FETCH_ASSOC);
     
             if (password_verify($password, $userData['password'])) {
+                $_SESSION['user_id'] = $userData['id'];
+                $_SESSION['user_name'] = $userData['name'];
+                $_SESSION['user_email'] = $userData['email'];
+                $_SESSION['user_role'] = $userData['role'];
+                
                 if ($userData['role'] == 'student') {
                     return 'student';
                 } elseif ($userData['role'] == 'teacher') {

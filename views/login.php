@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($loginResult === 'student') {
         $message = "Bienvenue, étudiant!";
         $_SESSION['message'] = $message;
-        header("Location: student_home.php");
+        header("Location: ../views/student_home.php");
         exit();
     } elseif ($loginResult === 'teacher') {
         $message = "Bienvenue, enseignant!";

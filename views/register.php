@@ -1,7 +1,9 @@
 <?php
 
+session_start();
+
 require_once '../model/DATABASE.php'; 
-require_once '../model/student.php';
+require_once '../model/visteur.php';
 
 $db = new Database();
 $conn = $db->connect();
