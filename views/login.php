@@ -1,4 +1,37 @@
 
+<?php
+
+session_start();
+require_once '../model/DATABASE.php'; 
+require_once '../model/USER.php';
+
+$db = new Database();
+$conn = $db->connect();
+
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+
+    $loginResult = User::login($email, $password, $conn);
+
+    if ($loginResult === 'student') {
+        $message = "Bienvenue, étudiant!";
+        $_SESSION['message'] = $message;
+        header("Location: student_home.php");
+        exit();
+    } elseif ($loginResult === 'teacher') {
+        $message = "Bienvenue, enseignant!";
+        $_SESSION['message'] = $message;
+        header("Location: teatcher_dashboard.php");
+        exit();
+    } else {
+        $message = "E-mail ou mot de passe incorrect.";
+    }
+}
+?>
+
 
 
 
