@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,6 +29,13 @@
     </div>
   </header>
 
+
+  <?php if (!empty($message)): ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <?= $message; ?>
+        </div>
+      <?php endif; ?>
+
   <!-- Main Content -->
   <main class="container mx-auto p-4">
     <section class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
@@ -52,7 +60,7 @@
         </div>
       </form>
       <p class="text-center">
-        Pas encore de compte ? <a class="text-blue-600 hover:underline" href="register.html">Inscrivez-vous</a>
+        Pas encore de compte ? <a class="text-blue-600 hover:underline" href="../views/register.php">Inscrivez-vous</a>
       </p>
     </section>
   </main>

@@ -9,11 +9,7 @@ if (!isset($_SESSION['user'])) {
 require '../model/DATABASE.php';
 require '../model/student.php';
 
-$db = new Database('localhost', 'root', '', 'youdemy');
-$student = new Student($_SESSION['user']['email'], '', $_SESSION['user']['name']);
-$student->setId($_SESSION['user']['id']); 
 
-$enrolledCourses = $student->getEnrolledCourses($db);
 ?>
 
 <!DOCTYPE html>
