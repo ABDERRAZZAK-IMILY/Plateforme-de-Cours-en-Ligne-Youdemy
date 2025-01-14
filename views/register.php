@@ -1,4 +1,32 @@
+<?php
 
+require_once '../model/DATABASE.php'; 
+require_once '../model/student.php';
+
+$db = new Database();
+$conn = $db->connect();
+
+$message = '';  
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST["name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $role = htmlspecialchars($_POST["role"]);
+
+    $A = new Visteur($name, $email, $password, $role);
+    $A->setName($name);
+    $A->setEmail($email);
+    $A->setPassword($password);
+    $A->setRole($role);
+
+    if ($A->register($conn)) {
+        $message = "Inscription réussie !";
+    } else {
+        $message = "Une erreur est survenue. Veuillez réessayer.";
+    }
+}
+?>
 
 <html lang="fr">
 <head>
