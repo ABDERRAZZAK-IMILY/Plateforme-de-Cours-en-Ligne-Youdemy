@@ -4,7 +4,6 @@ require_once '../model/USER.php';
 require_once '../model/teacher.php';
 require_once '../model/cours.php';
 
-
 if (!isset($_SESSION['role'], $_SESSION['status']) || $_SESSION['role'] !== "teacher" || $_SESSION['status'] !== 'active') {
     header('Location: 401.php');
     exit();

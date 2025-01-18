@@ -8,7 +8,7 @@ require '../model/visteur.php';
 
 
 
-$student = new Visteur("" , "", "" , "", "" , "");
+$student = new Visteur($id ?? NULL , $name ?? NULL, $role ?? NULL , $email ?? NULL, $password ?? NULL, $created_at ?? NULL);
 
 $courses = $student->viewCatalog();
 
