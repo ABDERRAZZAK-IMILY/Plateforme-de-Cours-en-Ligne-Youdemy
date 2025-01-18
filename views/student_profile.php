@@ -96,28 +96,19 @@ $courses = $student->myCourses($_SESSION['id']);
     </div>
    </section>
    <!-- My Courses Section -->
-   <section class="bg-white p-6 rounded-lg shadow-lg mt-8">
-    <h2 class="text-2xl font-bold mb-4">
-     Mes Cours
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-     <!-- Enrolled Course Item -->
-     <div class="bg-white p-4 rounded-lg shadow-lg">
-     <?php foreach ($courses as $course): ?>
-
-     <img alt="Image de couverture du cours" src="<?= htmlspecialchars($course['image']);?>" class="rounded-lg rotate-3d"/>
-     <h3 class="text-xl font-bold mt-4 text-gradient"><?= htmlspecialchars($course['title']); ?></h3>
-      <p class="mt-2">
-    <?= htmlspecialchars($course['description']); ?>
-      </p>
-      <form action="" method="GET">
-                            <a class="text-blue-600 hover:underline mt-2 block" href=" ../views/cours_details.php?id=<?= $course['id']; ?>">Accéder au cours</a>
-                            </form>
-    <?php endforeach; ?>
-
-     </div>
-    </div>
-   </section>
+ <section class="bg-white p-6 rounded-lg shadow-lg mt-8">
+            <h2 class="text-2xl font-bold mb-4">Mes Cours</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <?php foreach ($courses as $course): ?>
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+                        <img alt="Image de couverture du cours" src="<?= htmlspecialchars($course['image']); ?>" class="rounded-lg"/>
+                        <h3 class="text-xl font-bold mt-4 text-gradient"><?= htmlspecialchars($course['title']); ?></h3>
+                        <p class="mt-2"><?= htmlspecialchars($course['description']); ?></p>
+                        <a class="text-blue-600 hover:underline mt-2 block" href="../views/cours_details.php?id=<?= $course['id']; ?>">Accéder au cours</a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
   </main>
   <!-- Footer -->
   <footer class="bg-gray-800 text-white p-4 mt-8">
