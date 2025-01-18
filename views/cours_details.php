@@ -1,5 +1,45 @@
 
 
+<?php
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+if (isset($_GET['id'])) {
+    $courseId = $_GET['id'];
+
+    require_once '../model/Database.php';
+    $db = new Database();
+    $conn = $db->connect();
+
+    $query = "SELECT courses.*, users.name AS teacher_name , categories.name AS  categerories_name
+    FROM courses 
+    JOIN users ON courses.teacher_id = users.id 
+    JOIN categories ON categories.id = courses.catagugry_id
+    WHERE courses.id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$courseId]);
+    $course = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+
+    $tagsQuery = "SELECT tags.name 
+                  FROM course_tags 
+                  JOIN tags ON course_tags.tag_id = tags.id 
+                  WHERE course_tags.course_id = ?";
+    $tagsStmt = $conn->prepare($tagsQuery);
+    $tagsStmt->execute([$courseId]);
+    $tags = $tagsStmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    header("Location: catalogue.php");
+    exit();
+}
+?>
+
 
 
 
