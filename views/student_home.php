@@ -1,4 +1,32 @@
+<?php
+session_start();
 
+
+require '../model/DATABASE.php';
+require '../model/student.php';
+
+
+if(!isset( $_SESSION['id'] , $_SESSION['status']) || $_SESSION['status'] !== 'active') {
+    header('Location: 401.php');
+    exit();
+  }
+
+
+$student = new Student($_SESSION['id'] , $_SESSION['name'] , $_SESSION['role'] , $_SESSION['email'] , $_SESSION['password'] , $_SESSION['created_at']);
+
+$courses = $student->viewCatalog();
+
+if (isset($_POST['enrollcours'])){
+$studentId =  $_SESSION['id'];
+
+$courseId = $_POST['courseid'];
+
+$student = new Student($_SESSION['id'] , $_SESSION['name'] , $_SESSION['role'] , $_SESSION['email'] , $_SESSION['password'] , $_SESSION['created_at']);
+
+$enroll = $student->enrollCourse($courseId ,$studentId);
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
