@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = htmlspecialchars($_POST["password"]);
     $role = htmlspecialchars($_POST["role"]);
 
-    $A = new Visteur($name, $email, $password, $role);
+    $A = new Visteur( "", $name, $email, $password, $role , "");
     $A->setName($name);
     $A->setEmail($email);
     $A->setPassword($password);
@@ -46,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1 class="text-2xl font-bold text-blue-600">Youdemy</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a class="hover:underline" href="#">Accueil</a></li>
-                    <li><a class="hover:underline" href="#">Catalogue</a></li>
-                    <li><a class="hover:underline" href="#">Connexion</a></li>
+                    <li><a class="hover:underline" href="home.php">Accueil</a></li>
+                    <li><a class="hover:underline" href="Catalogue.php">Catalogue</a></li>
+                    <li><a class="hover:underline" href="login.php">Connexion</a></li>
                     <li><a class="hover:underline" href="#">Inscription</a></li>
                 </ul>
             </nav>

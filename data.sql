@@ -17,8 +17,11 @@ CREATE TABLE courses (
     image VARCHAR(100),
     content_url VARCHAR(255),
     teacher_id INT,
+    catagury_id INT ,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (teacher_id) REFERENCES users(id)
+     FOREIGN KEY (catagury_id) REFERENCES categories(id)
+
 );
 
 

@@ -1,16 +1,4 @@
-<?php
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
-
-require '../model/DATABASE.php';
-require '../model/student.php';
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,7 +65,8 @@ require '../model/student.php';
             <h1 class="text-2xl font-bold text-white float">Youdemy</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a class="text-white hover:underline" href="#">Accueil</a></li>
+                    <li><a class="text-white hover:underline" href="student_home.php">Accueil</a></li>
+                    <li><a class="text-white hover:underline" href="student_profile.php">PROFILE</a></li>
                     <li><a class="text-white hover:underline" href="logout.php">Déconnexion</a></li>
                 </ul>
             </nav>
@@ -87,23 +76,24 @@ require '../model/student.php';
     <!-- Main Content -->
     <main class="container mx-auto p-4">
         <section class="bg-white p-6 rounded-lg shadow-3d fade-in">
-            <h2 class="text-2xl font-bold mb-4 text-gradient">Espace Étudiant</h2>
-            <p class="mb-6 text-gray-700">Bienvenue, <?= htmlspecialchars($_SESSION['user']['name']); ?>! Voici les cours auxquels vous êtes inscrit.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php if ($enrolledCourses->num_rows > 0): ?>
-                    <?php while ($course = $enrolledCourses->fetch_assoc()): ?>
+            <h2 class="text-2xl font-bold mb-4 text-gradient">Espace Étudiant -catlogue</h2>
+            <p class="mb-6 text-gray-700">Bienvenue, <?= htmlspecialchars($_SESSION['name']); ?>! Voici les cours diponible</p>
                         <!-- Course Item -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <?php foreach ($courses as $course): ?>
                         <div class="card-gradient p-4 rounded-lg hover-scale">
                             <img alt="Image de couverture du cours" src="<?= htmlspecialchars($course['image']);?>" class="rounded-lg rotate-3d"/>
                             <h3 class="text-xl font-bold mt-4 text-gradient"><?= htmlspecialchars($course['title']); ?></h3>
                             <p class="mt-2 text-gray-700"><?= htmlspecialchars($course['description']); ?></p>
-                            <a class="text-blue-600 hover:underline mt-2 block" href="course_details.php?id=<?= $course['id']; ?>">Voir les détails</a>
+                            <form  method="POST">
+
+                            <input type="hidden" name="courseid" value="<?= htmlspecialchars($course['id']); ?>" />
+
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" type="submit" name="enrollcours">Enroll Course</button>
+                            </form>
                         </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p class="text-gray-700">Vous n'êtes inscrit à aucun cours pour le moment.</p>
-                <?php endif; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
         </section>
     </main>
 

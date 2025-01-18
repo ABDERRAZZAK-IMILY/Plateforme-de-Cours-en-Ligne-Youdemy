@@ -1,9 +1,10 @@
-
 <?php
 
 session_start();
 require_once '../model/DATABASE.php'; 
 require_once '../model/USER.php';
+
+
 
 $db = new Database();
 $conn = $db->connect();
@@ -25,6 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Bienvenue, enseignant!";
         $_SESSION['message'] = $message;
         header("Location: teatcher_dashboard.php");
+        exit();
+      } elseif ($loginResult === 'admin') {
+        $message = "Bienvenue, enseignant!";
+        $_SESSION['message'] = $message;
+        header("Location: admin_dashboard.php");
         exit();
     } else {
         $message = "E-mail ou mot de passe incorrect.";
@@ -53,10 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h1 class="text-2xl font-bold text-blue-600">Youdemy</h1>
       <nav>
         <ul class="flex space-x-4">
-          <li><a class="hover:underline" href="#">Accueil</a></li>
-          <li><a class="hover:underline" href="#">Catalogue</a></li>
+          <li><a class="hover:underline" href="home.php">Accueil</a></li>
+          <li><a class="hover:underline" href="Catalogue.php">Catalogue</a></li>
           <li><a class="hover:underline" href="#">Connexion</a></li>
-          <li><a class="hover:underline" href="#">Inscription</a></li>
+          <li><a class="hover:underline" href="register.php">Inscription</a></li>
         </ul>
       </nav>
     </div>

@@ -4,8 +4,6 @@
 
 
 
-
-
 <html lang="fr">
  <head>
   <meta charset="utf-8"/>
@@ -61,12 +59,12 @@
      <p class="mb-4">
       Rejoignez des millions d'étudiants et commencez à apprendre dès aujourd'hui avec Youdemy.
      </p>
-     <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="#">
+     <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="login.php">
       Commencez maintenant
      </a>
     </div>
     <div class="md:w-1/2 mt-6 md:mt-0">
-     <img alt="Illustration d'étudiants utilisant une plateforme de cours en ligne" src="https://placehold.co/600x400"/>
+     <img alt="Illustration d'étudiants utilisant une plateforme de cours en ligne" src="../assest/image/youdmy.jpg"/>
     </div>
    </div>
   </section>
@@ -76,84 +74,27 @@
     Cours en vedette
    </h2>
    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ 
+
+
+
     <!-- Course Item -->
+    <?php foreach ($courses as $course): ?>
+
     <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur le développement web" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Développement Web
+    <img alt="Image de couverture du cours sur la data science" src="<?= htmlspecialchars($course['image']);?>" onerror="this.src='https://placehold.co/800x1200'" />
+    <h3 class="text-xl font-bold mt-4">
+     <?= htmlspecialchars($course['title']); ?>
      </h3>
      <p class="mt-2">
-      Apprenez les bases du développement web avec HTML, CSS et JavaScript.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
+     <?= htmlspecialchars($course['description']); ?>
+         </p>
+     <a class="text-blue-600 hover:underline mt-2 block" href=" ../views/login.php">
       Voir les détails
      </a>
     </div>
-    <!-- Course Item -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur la data science" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Data Science
-     </h3>
-     <p class="mt-2">
-      Découvrez les techniques de la data science et apprenez à analyser des données.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
-      Voir les détails
-     </a>
-    </div>
-    <!-- Course Item -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur le marketing digital" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Marketing Digital
-     </h3>
-     <p class="mt-2">
-      Maîtrisez les stratégies de marketing digital pour booster votre entreprise.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
-      Voir les détails
-     </a>
-    </div>
-    <!-- Course Item -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur la programmation Python" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Programmation Python
-     </h3>
-     <p class="mt-2">
-      Apprenez à programmer en Python, un langage polyvalent et puissant.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
-      Voir les détails
-     </a>
-    </div>
-    <!-- Course Item -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur la gestion de projet" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Gestion de Projet
-     </h3>
-     <p class="mt-2">
-      Développez vos compétences en gestion de projet et apprenez à diriger des équipes.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
-      Voir les détails
-     </a>
-    </div>
-    <!-- Course Item -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-     <img alt="Image de couverture du cours sur le design graphique" src="https://placehold.co/300x200"/>
-     <h3 class="text-xl font-bold mt-4">
-      Design Graphique
-     </h3>
-     <p class="mt-2">
-      Apprenez les principes du design graphique et créez des visuels époustouflants.
-     </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href="#">
-      Voir les détails
-     </a>
-    </div>
+    <?php endforeach; ?>
+ 
    </div>
   </section>
   <!-- Testimonials -->
@@ -165,9 +106,9 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
      <!-- Testimonial Item -->
      <div class="bg-white p-4 rounded-lg shadow-lg">
-      <img alt="Photo de profil d'un étudiant satisfait" class="w-16 h-16 rounded-full mx-auto" src="https://placehold.co/100x100"/>
+      <img alt="Photo de profil d'un étudiant satisfait" class="w-16 h-16 rounded-full mx-auto" src="https://th.bing.com/th?id=OIF.ubd8%2fYwMvYuuUnAxWZF%2bYA&w=197&h=198&c=7&r=0&o=5&dpr=1.5&pid=1.7"/>
       <h3 class="text-xl font-bold mt-4 text-center">
-       Jean Dupont
+       Lookman
       </h3>
       <p class="mt-2 text-center">
        "Youdemy m'a permis d'acquérir de nouvelles compétences et de progresser dans ma carrière."
@@ -175,17 +116,17 @@
      </div>
      <!-- Testimonial Item -->
      <div class="bg-white p-4 rounded-lg shadow-lg">
-      <img alt="Photo de profil d'une étudiante satisfaite" class="w-16 h-16 rounded-full mx-auto" src="https://placehold.co/100x100"/>
+      <img alt="Photo de profil d'une étudiante satisfaite" class="w-16 h-16 rounded-full mx-auto" src="https://th.bing.com/th?q=Hakimi+Fond+Blanc&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-XA&cc=MA&setlang=fr&adlt=strict&t=1&mw=247"/>
       <h3 class="text-xl font-bold mt-4 text-center">
-       Marie Curie
-      </h3>
+  Achraf Hakimi
+    </h3>
       <p class="mt-2 text-center">
        "Les cours sont bien structurés et les enseignants sont très compétents."
       </p>
      </div>
      <!-- Testimonial Item -->
      <div class="bg-white p-4 rounded-lg shadow-lg">
-      <img alt="Photo de profil d'un étudiant satisfait" class="w-16 h-16 rounded-full mx-auto" src="https://placehold.co/100x100"/>
+      <img alt="Photo de profil d'un étudiant satisfait" class="w-16 h-16 rounded-full mx-auto" src="https://th.bing.com/th/id/OIP.c2trNz7IkscCCKLQ4QL1WQHaJP?w=141&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"/>
       <h3 class="text-xl font-bold mt-4 text-center">
        Albert Einstein
       </h3>
@@ -202,7 +143,7 @@
     <h2 class="text-3xl font-bold mb-4">
      Prêt à commencer votre apprentissage ?
     </h2>
-    <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="#">
+    <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="register.php">
      Inscrivez-vous maintenant
     </a>
    </div>
