@@ -5,10 +5,11 @@ require_once '../model/teacher.php';
 require_once '../model/cours.php';
 
 
-if(!isset( $_SESSION['id'] , $_SESSION['status']) || $_SESSION['status'] !== 'active') {
+if (!isset($_SESSION['role'], $_SESSION['status']) || $_SESSION['role'] !== "teacher" || $_SESSION['status'] !== 'active') {
     header('Location: 401.php');
     exit();
-  }
+}
+
 
 $db = new Database();
 $conn = $db->connect();
@@ -124,6 +125,10 @@ if ($stmt && $stmt->rowCount() > 0) {
                     <a href="javascript:void(0);" onclick="showSection('statistiques')" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">
                         <i class="fas fa-chart-line mr-2"></i> Statistiques
                     </a>
+                    <a href="logout.php"  class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">
+    <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion</a>
+
+
                 </nav>
             </aside>
 

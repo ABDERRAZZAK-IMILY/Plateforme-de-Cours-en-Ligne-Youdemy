@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($A->register($conn)) {
         $message = "Inscription réussie !";
+        // header('Location: login.php');
     } else {
-        $message = "Une erreur est survenue. Veuillez réessayer.";
+        $message = "alerdy existe. Veuillez réessayer.";
     }
 }
 ?>
