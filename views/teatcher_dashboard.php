@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once '../model/USER.php';
-require_once '../model/teacher.php';
-require_once '../model/cours.php';
+// require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/USER.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/teacher.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/cours.php');
 
 if (!isset($_SESSION['role'], $_SESSION['status']) || $_SESSION['role'] !== "teacher" || $_SESSION['status'] !== 'active') {
     header('Location: 401.php');

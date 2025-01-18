@@ -1,6 +1,5 @@
 <?php
 session_start();
-require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
 require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/student.php');
 
 
@@ -30,7 +29,7 @@ if (!empty($searchKeyword)) {
       <h1 class="text-2xl font-bold">Catalogue des Cours</h1>
       <nav>
         <ul class="flex space-x-4">
-          <li><a class="hover:underline" href="home.php">Accueil</a></li>
+          <li><a class="hover:underline" href="../index.php">Accueil</a></li>
           <li><a class="hover:underline" href="Catalogue.php">Catalogue</a></li>
           <li><a class="hover:underline" href="login.php">Connexion</a></li>
           <li><a class="hover:underline" href="register.php">Inscription</a></li>

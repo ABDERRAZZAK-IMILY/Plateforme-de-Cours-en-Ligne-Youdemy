@@ -63,8 +63,7 @@ if (isset($_GET['id'])) {
             <nav>
                 <ul class="flex space-x-4">
                     <li><a class="hover:underline" href="student_home.php">Accueil</a></li>
-                    <li><a class="hover:underline" href="login.php">Connexion</a></li>
-                    <li><a class="hover:underline" href="register.php">Inscription</a></li>
+                    <li><a class="hover:underline" href="logout.php">logout</a></li>
                 </ul>
             </nav>
         </div>

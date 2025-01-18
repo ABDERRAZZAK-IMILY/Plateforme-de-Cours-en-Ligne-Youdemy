@@ -43,17 +43,17 @@ $courses = $student->viewCatalog();
        </a>
       </li>
       <li>
-       <a class="hover:underline" href="../views/Catalogue.php">
+       <a class="hover:underline" href="views/Catalogue.php">
         Catalogue
        </a>
       </li>
       <li>
-       <a class="hover:underline" href="../views/login.php">
+       <a class="hover:underline" href="views/login.php">
         Connexion
        </a>
       </li>
       <li>
-       <a class="hover:underline" href="../views/register.php">
+       <a class="hover:underline" href="views/register.php">
         Inscription
        </a>
       </li>
@@ -76,7 +76,7 @@ $courses = $student->viewCatalog();
      </a>
     </div>
     <div class="md:w-1/2 mt-6 md:mt-0">
-     <img alt="Illustration d'étudiants utilisant une plateforme de cours en ligne" src="../assest/image/youdmy.jpg"/>
+    <img alt="Illustration d'étudiants utilisant une plateforme de cours en ligne" src="assest/image/youdmy.jpg"/>
     </div>
    </div>
   </section>
@@ -101,7 +101,7 @@ $courses = $student->viewCatalog();
      <p class="mt-2">
      <?= htmlspecialchars($course['description']); ?>
          </p>
-     <a class="text-blue-600 hover:underline mt-2 block" href=" ../views/login.php">
+     <a class="text-blue-600 hover:underline mt-2 block" href="views/login.php">
       Voir les détails
      </a>
     </div>

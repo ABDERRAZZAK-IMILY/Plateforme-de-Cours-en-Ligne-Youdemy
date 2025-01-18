@@ -9,7 +9,7 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
-require '../model/DATABASE.php';
+// require '../model/DATABASE.php';
 require '../model/student.php';
 
 
@@ -49,16 +49,6 @@ $courses = $student->myCourses($_SESSION['id']);
       <li>
        <a class="hover:underline" href="student_home.php">
         Catalogue
-       </a>
-      </li>
-      <li>
-       <a class="hover:underline" href="login.php">
-        Connexion
-       </a>
-      </li>
-      <li>
-       <a class="hover:underline" href="register.php">
-        Inscription
        </a>
       </li>
       <li><a class="hover:underline" href="logout.php">Déconnexion</a></li>
