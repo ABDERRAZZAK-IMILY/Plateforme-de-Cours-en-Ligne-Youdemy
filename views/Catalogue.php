@@ -1,4 +1,18 @@
+<?php
+session_start();
+require '../model/DATABASE.php';
+require '../model/student.php';
 
+$student = new Student($id ?? NULL , $name ?? NULL, $role ?? NULL , $email ?? NULL, $password ?? NULL, $created_at ?? NULL);
+
+$searchKeyword = isset($_GET['search']) ? $_GET['search'] : '';
+
+if (!empty($searchKeyword)) {
+    $courses = $student->searchCourses($searchKeyword);
+} else {
+    $courses = $student->viewCatalog();
+}
+?>
 
 <html lang="fr">
 <head>
