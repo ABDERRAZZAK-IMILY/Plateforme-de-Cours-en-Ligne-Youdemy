@@ -1,7 +1,24 @@
 
 
 
+<?php
+session_start();
 
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+require '../model/DATABASE.php';
+require '../model/student.php';
+
+
+$student = new Student($_SESSION['id'] , $_SESSION['name'] , $_SESSION['role'] , $_SESSION['email'] , $_SESSION['password'] , $_SESSION['created_at']);
+
+$courses = $student->myCourses($_SESSION['id']);
+
+
+?>
 
 <html lang="fr">
  <head>
