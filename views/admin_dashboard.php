@@ -7,8 +7,9 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-require '../model/DATABASE.php';
-require '../model/admin.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/admin.php');
+
 
 $db = new Database();
 $conn = $db->connect();

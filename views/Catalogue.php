@@ -1,7 +1,8 @@
 <?php
 session_start();
-require '../model/DATABASE.php';
-require '../model/student.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/student.php');
+
 
 $student = new Student($id ?? NULL , $name ?? NULL, $role ?? NULL , $email ?? NULL, $password ?? NULL, $created_at ?? NULL);
 

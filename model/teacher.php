@@ -1,7 +1,7 @@
 <?php
 
-require_once '../model/USER.php';
-require '../model/DATABASE.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/USER.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
 
 
 class Teacher extends User {

@@ -3,8 +3,8 @@
 <?php
 
 session_start();
-require '../model/DATABASE.php';
-require '../model/visteur.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/visteur.php');
 
 
 

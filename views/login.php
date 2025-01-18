@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-require_once '../model/DATABASE.php'; 
-require_once '../model/USER.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
 
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/USER.php');
 
 
 $db = new Database();

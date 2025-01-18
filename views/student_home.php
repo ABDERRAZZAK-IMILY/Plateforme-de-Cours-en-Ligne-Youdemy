@@ -2,8 +2,9 @@
 session_start();
 
 
-require '../model/DATABASE.php';
-require '../model/student.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/student.php');
+
 
 
 if(!isset( $_SESSION['id'] , $_SESSION['status']) || $_SESSION['status'] !== 'active') {

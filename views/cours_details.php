@@ -11,8 +11,9 @@ if (!isset($_SESSION['id'])) {
 if (isset($_GET['id'])) {
     $courseId = $_GET['id'];
 
-    require_once '../model/Database.php';
-    $db = new Database();
+    require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+
+        $db = new Database();
     $conn = $db->connect();
 
     $query = "SELECT courses.*, users.name AS teacher_name , categories.name AS  categerories_name

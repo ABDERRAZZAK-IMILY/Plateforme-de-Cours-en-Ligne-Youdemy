@@ -2,8 +2,9 @@
 
 session_start();
 
-require_once '../model/DATABASE.php'; 
-require_once '../model/visteur.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/visteur.php');
+
 
 $db = new Database();
 $conn = $db->connect();

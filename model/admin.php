@@ -1,10 +1,10 @@
 <?php
 
-require_once '../model/DATABASE.php';
-require_once '../model/catagory.php';
-require_once '../model/tag.php';
-require_once '../model/USER.php';
-require_once '../model/cours.php';
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/catagory.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/tag.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/USER.php');
+require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/cours.php');
 
 class Admin extends User {
 
