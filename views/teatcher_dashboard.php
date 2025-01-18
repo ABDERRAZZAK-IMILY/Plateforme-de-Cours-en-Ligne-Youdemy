@@ -1,4 +1,99 @@
+<?php
+session_start();
+require_once '../model/USER.php';
+require_once '../model/teacher.php';
+require_once '../model/cours.php';
 
+
+if(!isset( $_SESSION['id'] , $_SESSION['status']) || $_SESSION['status'] !== 'active') {
+    header('Location: 401.php');
+    exit();
+  }
+
+$db = new Database();
+$conn = $db->connect();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title = isset($_POST['title']) ? $_POST['title'] : '';
+    $description = isset($_POST['description']) ? $_POST['description'] : '';
+    $image = isset($_POST['image']) ? $_POST['image'] : '';
+    $content = isset($_POST['content']) ? $_POST['content'] : '';
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+
+    if (!empty($title) && !empty($description) && !empty($image) && !empty($content) && !empty($category)) {
+        $cours = new Cours($title, $description, $image, $content, $category);
+        $teacher = new Teacher($_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $_SESSION['password'], $_SESSION['role'] , $_SESSION['created_at']);
+        try {
+            $result = $teacher->createCourse($cours);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } else {
+        echo "All fields are required.";
+    }
+}
+
+
+    if (isset($_POST['modifycourse'])) {
+        $newTitle = $_POST['newtitle'];
+        $newCategoryId = $_POST['cataguryname'];
+        $newContent = $_POST['newcontent'];
+        $course_id = $_POST['articleId'];
+
+        $teacher = new Teacher($_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $_SESSION['password'], $_SESSION['role'] , $_SESSION['created_at']);
+        $modify = $teacher->modifyArticle($newTitle, $newCategoryId, $newContent, $course_id);
+    }
+
+    if (isset($_POST['removecourse'])) {
+        $course_id = $_POST['removecourseId'];
+
+        $teacher = new Teacher($_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $_SESSION['password'], $_SESSION['role'] , $_SESSION['created_at']);
+        $remove = $teacher->removecourse($course_id);
+    }
+
+    if (isset($_POST['tageadd'])) {
+
+        $courseid = $_POST['articleId'];
+        $tagid = $_POST['tagsname'];
+
+        $teacher = new Teacher($_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $_SESSION['password'], $_SESSION['role'] , $_SESSION['created_at']);
+        $tagadd = $teacher->Tagadd($courseid, $tagid);
+    }
+
+$categories = [];
+$categoryQuery = "SELECT id, name FROM categories";
+$stmt = $conn->query($categoryQuery);
+
+if ($stmt && $stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $categories[] = $row;
+    }
+}
+
+$tags = [];
+$tagsQuery = "SELECT * FROM tags";
+$stmt2 = $conn->query($tagsQuery);
+
+if ($stmt2 && $stmt2->rowCount() > 0) {
+    while ($row = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+        $tags[] = $row;
+    }
+}
+
+$courses = [];
+$query = "SELECT courses.id, courses.title, courses.description, courses.created_at, courses.image, courses.catagugry_id, categories.name AS category_name
+          FROM courses
+          JOIN categories ON courses.catagugry_id = categories.id ";
+$stmt = $conn->query($query);
+
+if ($stmt && $stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $courses[] = $row;
+    }
+} else {
+    $message = "No courses found.";
+}
+?>
 
 
 <!DOCTYPE html>
