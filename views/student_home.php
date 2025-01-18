@@ -23,7 +23,15 @@ $courseId = $_POST['courseid'];
 
 $student = new Student($_SESSION['id'] , $_SESSION['name'] , $_SESSION['role'] , $_SESSION['email'] , $_SESSION['password'] , $_SESSION['created_at']);
 
-$enroll = $student->enrollCourse($courseId ,$studentId);
+$message = '';
+
+
+  if ($student->isEnrolledInCourse($studentId, $courseId)) {
+    $message = "You are already enrolled in this course!";
+} else {
+    $enroll = $student->enrollCourse($courseId, $studentId);
+    $message = "Successfully enrolled in the course!";
+}
 }
 
 ?>
@@ -100,7 +108,12 @@ $enroll = $student->enrollCourse($courseId ,$studentId);
             </nav>
         </div>
     </header>
-
+           <!-- Display Success or Error Message -->
+    <?php if ($message ?? null): ?>
+        <div class="mb-4 p-4 text-center text-white <?php echo (strpos($message, "Successfully") !== false) ? 'bg-green-600' : 'bg-red-600'; ?>">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
     <!-- Main Content -->
     <main class="container mx-auto p-4">
         <section class="bg-white p-6 rounded-lg shadow-3d fade-in">

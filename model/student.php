@@ -73,6 +73,20 @@ if ($stmt && $stmt->rowCount() > 0) {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function isEnrolledInCourse($studentId, $courseId) {
+        $db = new DATABASE();
+        $conn = $db->connect();
+        $sql = "SELECT COUNT(*) FROM course_enrollments WHERE student_id = :student_id AND course_id = :course_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':student_id', $studentId);
+        $stmt->bindParam(':course_id', $courseId);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+
+        return $result > 0;
+    }
 }
 
 ?>
