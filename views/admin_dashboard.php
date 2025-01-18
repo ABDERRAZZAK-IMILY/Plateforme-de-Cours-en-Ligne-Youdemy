@@ -1,4 +1,83 @@
+<?php
+// Démarrage de la session
+session_start();
 
+if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'admin') {
+    header('Location: 401.php'); 
+    exit();
+}
+
+require '../model/DATABASE.php';
+require '../model/admin.php';
+
+$db = new Database();
+$conn = $db->connect();
+
+$admin = new Admin($id ?? NULL , $name ?? NULL, $role ?? NULL , $email ?? NULL, $password ?? NULL, $created_at ?? NULL);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+    if (isset($_POST['manage_user'])) {
+        $userId = $_POST['userId'];
+        $actionType = $_POST['actionType'];
+
+        $message = $admin->manageUsers($actionType, $userId);
+        $_SESSION['message'] = $message;
+    }
+
+    if (isset($_POST['insert_tags'])) {
+        $tag = $_POST['tags'];
+
+        $admin->manageTags('add', null, $tag);
+        $_SESSION['message'] = "Tags added successfully!";
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['manage_course'])) {
+            $courseId = $_POST['courseId'];
+            $actionType = $_POST['actionType'];
+    
+            if ($actionType === 'delete') {
+                $message = $admin->manageCourses('delete', $courseId);
+            } elseif ($actionType === 'modify') {
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                $image = $_POST['image'];
+                $content = $_POST['content'];
+                $category = $_POST['category'];
+                $message = $admin->manageCourses('modify', $courseId, $title, $description, $image, $content, $category);
+            }
+    
+            $_SESSION['message'] = $message;
+        }
+    }
+
+    if (isset($_POST['manage_category'])) {
+        $categoryId = $_POST['categoryId'] ?? null;
+        $actionType = $_POST['actionType'];
+        $categoryName = $_POST['categoryName'] ?? null;
+
+        $message = $admin->manageCategories($actionType, $categoryId, $categoryName);
+        $_SESSION['message'] = $message;
+    }
+
+    if (isset($_POST['manage_tag'])) {
+        $tagId = $_POST['tagId'];
+        $actionType = $_POST['actionType'];
+
+        $message = $admin->manageTags($actionType, $tagId);
+        $_SESSION['message'] = $message;
+    }
+}
+
+$users = $conn->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
+$courses = $admin->viewCatalog();
+$catagorys = $admin->manageCategories('view');
+$tags = $admin->manageTags('view');
+$categories = $conn->query("SELECT * FROM categories")->fetchAll(PDO::FETCH_ASSOC);
+$statistics = $admin->viewStatistics();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
