@@ -1,6 +1,18 @@
 
 
+<?php
 
+session_start();
+require '../model/DATABASE.php';
+require '../model/visteur.php';
+
+
+
+$student = new Visteur("" , "", "" , "", "" , "");
+
+$courses = $student->viewCatalog();
+
+?>
 
 
 
