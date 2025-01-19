@@ -89,12 +89,6 @@ class Admin extends User {
             } else {
                 $message = "Error: Unable to add tag.";
             }
-        } elseif ($action == 'edit' && $tagId && $tagName) {
-            if ($tag->editTag()) {
-                $message = "Tag updated successfully!";
-            } else {
-                $message = "Error: Unable to update tag.";
-            }
         } elseif ($action == 'delete' && $tagId) {
             if ($tag->deleteTag()) {
                 $message = "Tag deleted successfully!";
@@ -196,10 +190,7 @@ class Admin extends User {
     public function manageCourses($action, $courseId = null, $title = null, $description = null, $image = null, $content = null, $category = null, $teacher_id = null) {
         $message = "";
 
-        if ($action === 'create') {
-            $course = new Cours($title, $description, $image, $content, $category);
-            $message = $course->createCourse($teacher_id);
-        } elseif ($action === 'modify') {
+       if ($action === 'modify') {
             $course = new Cours($title, $description, $image, $content, $category);
             $message = $course->modifyCourse($courseId, $title, $description, $image, $content, $category);
         } elseif ($action === 'delete') {
