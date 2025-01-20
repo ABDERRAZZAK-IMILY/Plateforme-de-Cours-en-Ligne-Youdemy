@@ -37,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Youdemy - Inscription</title>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
@@ -69,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             <?php endif; ?>
 
-            <form action="" method="POST">
+            <form action="" method="POST" id="validation">
                 <div class="mb-4">
                     <label class="block text-gray-700" for="name">Nom complet</label>
                     <input class="w-full px-3 py-2 border rounded-lg" id="name" name="name" required="" type="text"/>
@@ -103,5 +105,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>© 2025 Youdemy. Tous droits réservés.</p>
         </div>
     </footer>
+
+
+    <script>
+    const namePattern = /^[a-zA-Z\s]+$/;
+    const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
+    const passwordPattern = /^(?=.*[a-zA-Z0-9]).{4,}$/;
+
+    document.getElementById('validation').addEventListener('submit', function(event) {
+        const firstName = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (!namePattern.test(firstName)) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Name should only contain letters and spaces.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            event.preventDefault(); 
+            return;
+        }
+
+        if (!emailPattern.test(email)) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please enter a valid email address.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            event.preventDefault(); 
+            return;
+        }
+
+        if (!passwordPattern.test(password)) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password must be at least 4 characters long.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            event.preventDefault(); 
+            return;
+        }
+    });
+</script>
 </body>
 </html>
