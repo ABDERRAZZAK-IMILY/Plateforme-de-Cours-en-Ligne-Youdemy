@@ -41,7 +41,6 @@ if ($stmt && $stmt->rowCount() > 0) {
 
         if ($stmt3->execute([$courseId, $studentId])) {
 
-            echo 'course id added successfully!';
         } else {
             echo 'error: unable to add course.';
         }

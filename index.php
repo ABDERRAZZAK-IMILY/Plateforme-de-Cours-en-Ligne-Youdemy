@@ -71,7 +71,7 @@ $courses = $student->viewCatalog();
      <p class="mb-4">
       Rejoignez des millions d'étudiants et commencez à apprendre dès aujourd'hui avec Youdemy.
      </p>
-     <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="login.php">
+     <a class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200" href="views/login.php">
       Commencez maintenant
      </a>
     </div>

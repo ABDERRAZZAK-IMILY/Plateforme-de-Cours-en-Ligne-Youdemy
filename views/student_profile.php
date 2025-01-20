@@ -42,7 +42,7 @@ $courses = $student->myCourses($_SESSION['id']);
     <nav>
      <ul class="flex space-x-4">
       <li>
-       <a class="hover:underline" href="home.php">
+       <a class="hover:underline" href="#">
         Accueil
        </a>
       </li>

@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h1 class="text-2xl font-bold text-blue-600">Youdemy</h1>
       <nav>
         <ul class="flex space-x-4">
-          <li><a class="hover:underline" href="home.php">Accueil</a></li>
+          <li><a class="hover:underline" href="../index.php">Accueil</a></li>
           <li><a class="hover:underline" href="Catalogue.php">Catalogue</a></li>
           <li><a class="hover:underline" href="#">Connexion</a></li>
           <li><a class="hover:underline" href="register.php">Inscription</a></li>

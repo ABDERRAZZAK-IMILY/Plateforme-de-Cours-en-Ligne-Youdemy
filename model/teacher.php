@@ -20,7 +20,6 @@ class Teacher extends User {
 
     $stmt = $conn->prepare("UPDATE courses SET title = ?, catagugry_id = ?, description = ? WHERE id = ?");
     if ($stmt->execute([$newTitle, $newCategoryId, $newContent, $course_id])) {
-        $message = 'course updated successfully!';
     } else {
         $message = 'Error: ' . implode(', ', $stmt->errorInfo());
     }
@@ -34,7 +33,6 @@ class Teacher extends User {
 
     $stmt = $conn->prepare("DELETE FROM courses WHERE id = ?");
     if ($stmt->execute([$course_id])) {
-        $message = 'Article removed successfully!';
     } else {
         $message = 'Error: ' . implode(', ', $stmt->errorInfo());
     }
@@ -77,7 +75,6 @@ class Teacher extends User {
         $stmt3 = $conn->prepare($addtagsid);
 
         if ($stmt3->execute([$course_id, $tagid])) {
-            echo 'tag id added successfully!';
         } else {
             echo 'error: unable to add tag to article.';
         }
