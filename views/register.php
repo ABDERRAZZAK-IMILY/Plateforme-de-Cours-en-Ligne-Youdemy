@@ -5,6 +5,7 @@ session_start();
 require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/DATABASE.php');
 require('C:/xampp/htdocs/YOUDMY/Plateforme-de-Cours-en-Ligne-Youdemy/model/visteur.php');
 
+// $_SESSION['token'] = md5(uniqid(mt_rand(), true));
 
 $db = new Database();
 $conn = $db->connect();
@@ -91,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <option value="teacher">Enseignant</option>
                     </select>
                 </div>
+                <!-- <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?? '' ?>"> -->
                 <div class="mb-4">
                     <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" type="submit">S'inscrire</button>
                 </div>

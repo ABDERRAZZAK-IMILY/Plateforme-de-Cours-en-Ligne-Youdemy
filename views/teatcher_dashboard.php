@@ -93,6 +93,9 @@ if ($stmt && $stmt->rowCount() > 0) {
 } else {
     $message = "No courses found.";
 }
+
+$teacher = new Teacher($_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $_SESSION['password'], $_SESSION['role'], $_SESSION['created_at']);
+$statistics = $teacher->getStatistics();
 ?>
 
 
@@ -263,29 +266,29 @@ if ($stmt && $stmt->rowCount() > 0) {
                 </section>
 
                 <!-- Statistiques -->
-                <section id="statistiques" class="section mb-8 hidden">
-                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Statistiques</h3>
-                    <div class="bg-white p-4 rounded shadow-md">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <div class="p-6 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg">
-                                <h4 class="text-lg font-semibold">Nombre total de cours</h4>
-                                <p class="text-3xl font-bold">10</p>
-                            </div>
-                            <div class="p-6 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-lg shadow-lg">
-                                <h4 class="text-lg font-semibold">Nombre d'étudiants inscrits</h4>
-                                <p class="text-3xl font-bold">200</p>
-                            </div>
-                            <div class="p-6 bg-gradient-to-r from-yellow-400 to-red-500 text-white rounded-lg shadow-lg">
-                                <h4 class="text-lg font-semibold">Cours le plus populaire</h4>
-                                <p class="text-3xl font-bold">Introduction à la programmation</p>
-                            </div>
-                            <div class="p-6 bg-gradient-to-r from-teal-400 to-indigo-500 text-white rounded-lg shadow-lg">
-                                <h4 class="text-lg font-semibold">Nombre de catégories</h4>
-                                <p class="text-3xl font-bold">3</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+<section id="statistiques" class="section mb-8 hidden">
+    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Statistiques</h3>
+    <div class="bg-white p-4 rounded shadow-md">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-6 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg">
+                <h4 class="text-lg font-semibold">Nombre total de cours</h4>
+                <p class="text-3xl font-bold"><?= $statistics['total_courses'] ?></p>
+            </div>
+            <div class="p-6 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-lg shadow-lg">
+                <h4 class="text-lg font-semibold">Nombre d'étudiants inscrits</h4>
+                <p class="text-3xl font-bold"><?= $statistics['total_students'] ?></p>
+            </div>
+            <div class="p-6 bg-gradient-to-r from-yellow-400 to-red-500 text-white rounded-lg shadow-lg">
+                <h4 class="text-lg font-semibold">Cours le plus populaire</h4>
+                <p class="text-3xl font-bold"><?= $statistics['most_popular_course'] ?></p>
+            </div>
+            <div class="p-6 bg-gradient-to-r from-teal-400 to-indigo-500 text-white rounded-lg shadow-lg">
+                <h4 class="text-lg font-semibold">Nombre de catégories</h4>
+                <p class="text-3xl font-bold"><?= $statistics['total_categories'] ?></p>
+            </div>
+        </div>
+    </div>
+</section>
             </main>
         </div>
     </div>

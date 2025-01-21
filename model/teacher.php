@@ -81,6 +81,39 @@ class Teacher extends User {
     }
     
 }
+
+
+public function getStatistics() {
+    $db = new Database();
+    $conn = $db->connect();
+
+    $statistics = [];
+
+    $query = "SELECT COUNT(*) as total_courses FROM courses";
+    $stmt = $conn->query($query);
+    $statistics['total_courses'] = $stmt->fetch(PDO::FETCH_ASSOC)['total_courses'];
+
+    $query = "SELECT COUNT(DISTINCT student_id) as total_students FROM course_enrollments";
+    $stmt = $conn->query($query);
+    $statistics['total_students'] = $stmt->fetch(PDO::FETCH_ASSOC)['total_students'];
+
+    $query = "SELECT courses.title, COUNT(course_enrollments.course_id) as enrollments 
+              FROM course_enrollments 
+              JOIN courses ON course_enrollments.course_id = courses.id 
+              GROUP BY course_enrollments.course_id 
+              ORDER BY enrollments DESC 
+              LIMIT 1";
+    $stmt = $conn->query($query);
+    $mostPopularCourse = $stmt->fetch(PDO::FETCH_ASSOC);
+    $statistics['most_popular_course'] = $mostPopularCourse ? $mostPopularCourse['title'] : 'No data';
+
+    $query = "SELECT COUNT(*) as total_categories FROM categories";
+    $stmt = $conn->query($query);
+    $statistics['total_categories'] = $stmt->fetch(PDO::FETCH_ASSOC)['total_categories'];
+
+    return $statistics;
 }
+}
+
 
 ?>
